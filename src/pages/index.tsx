@@ -228,7 +228,6 @@ function ShowcaseFilters({
               {tag === "favorite" ? (
                 <></>
               ) : (
-                <>
                   <li
                     key={i}
                     className={styles.checkboxListItem}
@@ -257,7 +256,6 @@ function ShowcaseFilters({
                       />
                     </ShowcaseTooltip>
                   </li>
-                </>
               )}
             </>
           );
