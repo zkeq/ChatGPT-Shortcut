@@ -145,13 +145,13 @@ function ShowcaseCard({ user, isDescription, copyCount, onCopy, onLove }) {
       <div className={clsx("card__body")}>
         <div className={clsx(styles.showcaseCardHeader)}>
           <div className={styles.showcaseCardTitle}>
-            <Link href={"/prompt/" + user.id} className={styles.showcaseCardLink}>
+            <Link href={"#"} className={styles.showcaseCardLink}>
               {userTitle}{" "}
             </Link>
             <span className={styles.showcaseCardBody}>{copyCount > 0 && `🔥${formatCopyCount(copyCount)}`}</span>
           </div>
           <Button.Group>
-            {userAuth && (
+            {/* {userAuth && (
               <Tooltip title={user.tags.includes("favorite") ? <Translate>点击移除收藏</Translate> : translate({ message: "收藏" })}>
                 <Button type="default" onClick={user.tags.includes("favorite") ? removeFavorite : handleLove}>
                   {user.tags.includes("favorite") ? <HeartTwoTone twoToneColor="#eb2f96" /> : <HeartOutlined />}
@@ -162,7 +162,7 @@ function ShowcaseCard({ user, isDescription, copyCount, onCopy, onLove }) {
               <Button type="text" disabled>
                 <HeartTwoTone twoToneColor="#eb2f96" />
               </Button>
-            )}
+            )} */}
             <Tooltip title={translate({ id: "theme.CodeBlock.copy", message: "复制" })}>
               <Button type="default" onClick={handleCopyClick}>
                 <CopyOutlined />

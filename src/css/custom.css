@@ -293,3 +293,13 @@ div[class^="announcementBar_"] {
     display: none;
   }
 }
+
+nav.navbar.navbar--fixed-top {
+    display: none;
+}
+
+/* --ifm-h1-font-size */
+:root {
+  --ifm-h1-font-size: 3rem;
+}
+

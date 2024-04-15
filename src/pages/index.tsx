@@ -113,7 +113,7 @@ function ShowcaseHeader() {
     <section className={"text--center"}>
       <div className={styles.hideOnMobile}>
         <Heading as="h1">AI Short</Heading>
-        <p>{SLOGAN}</p>
+        <p className={styles.slogan}>{SLOGAN}</p>
       </div>
       <UserStatus hideLinks={{ userCenter: false, myFavorite: false }} />
     </section>
@@ -444,43 +444,7 @@ function ShowcaseCards({ isDescription, showUserFavs }) {
 
   // 正常渲染 Favorites 区块
   return (
-    <section className="margin-top--lg margin-bottom--sm">
-      {filteredUsers.length === sortedUsers.length ? (
-        <>
-          <div className={styles.showcaseFavorite}>
-            <div className="container">
-              <div className={clsx("margin-bottom--md", styles.showcaseFavoriteHeader)}>
-                <Heading as="h2">
-                  <Translate id="showcase.favoritesList.title">Favorites</Translate>
-                </Heading>
-                <FavoriteIcon svgClass={styles.svgIconFavorite} />
-                <SearchBar />
-              </div>
-              <ul className={clsx("clean-list", styles.showcaseList)}>
-                {favoriteUsers.map((user) => (
-                  <ShowcaseCard key={user.id} user={user} isDescription={isDescription} copyCount={copyCounts[user.id] || 0} onCopy={handleCardCopy} onLove={setUserLoves} />
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="container margin-top--lg">
-            <Heading as="h2" className={styles.showcaseHeader}>
-              <Translate id="showcase.usersList.allUsers">All prompts</Translate>
-            </Heading>
-            <ul className={clsx("clean-list", styles.showcaseList)}>
-              {displayedOtherUsers.map((user) => (
-                <ShowcaseCard key={user.id} user={user} isDescription={isDescription} copyCount={copyCounts[user.id] || 0} onCopy={handleCardCopy} onLove={setUserLoves} />
-              ))}
-            </ul>
-            {!showAllOtherUsers && otherUsers.length > 50 && (
-              <Link className="button button--secondary" style={{ width: "100%" }} onClick={() => setShowAllOtherUsers(true)}>
-                {<ArrowDownOutlined />}
-                <Translate>加载更多</Translate>
-              </Link>
-            )}
-          </div>
-        </>
-      ) : (
+
         <div className="container">
           <div className={clsx("margin-bottom--md", styles.showcaseFavoriteHeader)}>
             <SearchBar />
@@ -492,9 +456,7 @@ function ShowcaseCards({ isDescription, showUserFavs }) {
           </ul>
         </div>
       )}
-    </section>
-  );
-}
+
 
 export default function Showcase(): JSX.Element {
   const [Shareurl, setShareUrl] = useState("");
