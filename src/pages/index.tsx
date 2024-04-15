@@ -146,10 +146,10 @@ function useFilteredUsers() {
 }
 
 function ShowcaseHeader() {
-  const el = React.useRef(null);
+  const slogan = React.useRef(null);
 
   React.useEffect(() => {
-    const typed = new Typed(el.current, {
+    const typed = new Typed(slogan.current, {
       strings: ['让生产力加倍的 AI 对话快捷指令！', '一键复制，即可用于IMYAI-GPT Cluade 文心 千问 讯飞 等对话！'],
       typeSpeed: 100,
       backSpeed: 100,
@@ -165,7 +165,7 @@ function ShowcaseHeader() {
     <section className={"text--center"}>
       <div className={styles.hideOnMobile}>
         <Heading as="h1" className={styles.blueTitle}>AI Short</Heading>
-        <span ref={el} ></span>
+        <span ref={slogan} >&nbsp;</span>
       </div>
       <UserStatus hideLinks={{ userCenter: false, myFavorite: false }} />
     </section>
