@@ -150,7 +150,7 @@ function ShowcaseHeader() {
 
   React.useEffect(() => {
     const typed = new Typed(slogan.current, {
-      strings: ['让生产力加倍的 AI 对话快捷指令！', '一键复制，即可用于IMYAI-GPT Cluade 文心 千问 讯飞 等对话！'],
+      strings: ['让生产力加倍的 Prompt 快捷指令！', '一键复制，即可用于IMYAI-GPT Cluade 文心 千问 讯飞 等对话！'],
       typeSpeed: 60,
       backSpeed: 60,
       backDelay: 500,
@@ -164,7 +164,7 @@ function ShowcaseHeader() {
   return (
     <section className={"text--center"}>
       <div className={styles.hideOnMobile}>
-        <Heading as="h1" className={styles.blueTitle}>AI Short</Heading>
+        <Heading as="h1" className={styles.blueTitle}>AI 对话参考提示词库</Heading>
         <span ref={slogan} >&nbsp;</span>
       </div>
       <UserStatus hideLinks={{ userCenter: false, myFavorite: false }} />
