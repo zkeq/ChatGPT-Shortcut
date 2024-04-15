@@ -151,8 +151,8 @@ function ShowcaseHeader() {
   React.useEffect(() => {
     const typed = new Typed(slogan.current, {
       strings: ['让生产力加倍的 AI 对话快捷指令！', '一键复制，即可用于IMYAI-GPT Cluade 文心 千问 讯飞 等对话！'],
-      typeSpeed: 100,
-      backSpeed: 100,
+      typeSpeed: 60,
+      backSpeed: 60,
       backDelay: 500,
       loop: true
     });
