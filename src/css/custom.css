@@ -294,9 +294,9 @@ div[class^="announcementBar_"] {
   }
 }
 
-/* nav.navbar.navbar--fixed-top {
+nav.navbar.navbar--fixed-top {
     display: none;
-} */
+}
 
 /* --ifm-h1-font-size */
 :root {
