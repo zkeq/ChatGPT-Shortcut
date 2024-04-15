@@ -62,6 +62,10 @@
   font-weight: bold;
   margin-bottom: 0;
   flex: 1 1 auto;
+  text-decoration: none;
+  background: linear-gradient(var(--ifm-color-primary), var(--ifm-color-primary)) 0% 100% / 0% 1px no-repeat;
+  transition: background-size ease-out 200ms;
+  color: var(--ifm-link-color);
 }
 
 .showcaseCardTitle a {

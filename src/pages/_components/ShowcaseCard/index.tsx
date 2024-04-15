@@ -148,10 +148,8 @@ function ShowcaseCard({ user, isDescription, copyCount, onCopy, onLove }) {
     <li key={userTitle} className="card shadow--md">
       <div className={clsx("card__body")}>
         <div className={clsx(styles.showcaseCardHeader)}>
-          <div className={styles.showcaseCardTitle}>
-            <Link href={"#"} className={styles.showcaseCardLink}>
+          <div className={styles.showcaseCardTitle}> 
               {userTitle}{" "}
-            </Link>
             <span className={styles.showcaseCardBody}>{copyCount > 0 && `🔥${formatCopyCount(copyCount)}`}</span>
           </div>
           <Button.Group>
