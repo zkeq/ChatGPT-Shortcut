@@ -168,45 +168,6 @@ function ShowcaseFilters({ onToggleDescription, showUserFavs, setShowUserFavs })
         </div>
       </div>
       <ul className={clsx("clean-list", styles.checkboxList)}>
-        {/* 登陆用户标签按钮 */}
-        {userAuth && (
-          <>
-            <li className={styles.checkboxListItem} onClick={handleUserPrompts}>
-              <ShowcaseTooltip
-                text={translate({
-                  id: "myprompt.tooltip",
-                  message: "我添加或制作过的个人提示词，可用于存放AiShort之外的提示词。",
-                })}
-                anchorEl="#__docusaurus">
-                <ShowcaseTagSelect
-                  tag="myprompt"
-                  label={translate({
-                    id: "myprompt",
-                    message: "我的提示词",
-                  })}
-                  icon={<EditOutlined style={{ marginLeft: "5px" }} />}
-                />
-              </ShowcaseTooltip>
-            </li>
-            <li className={styles.checkboxListItem} onClick={handleUserFavs}>
-              <ShowcaseTooltip
-                text={translate({
-                  id: "myfavorite.tooltip",
-                  message: "我收藏的提示词，包括社区提示词。",
-                })}
-                anchorEl="#__docusaurus">
-                <ShowcaseTagSelect
-                  tag="myfavorite"
-                  label={translate({
-                    id: "link.myfavorite",
-                    message: "我的收藏",
-                  })}
-                  icon={<HeartOutlined style={{ marginLeft: "5px" }} />}
-                />
-              </ShowcaseTooltip>
-            </li>
-          </>
-        )}
         {modifiedTagList.map((tag, i) => {
           const { label, description, color } = Tags[tag];
           const id = `showcase_checkbox_id_${tag}`;
@@ -246,35 +207,6 @@ function ShowcaseFilters({ onToggleDescription, showUserFavs, setShowUserFavs })
             </li>
           );
         })}
-        <li className={styles.checkboxListItem}>
-          <ShowcaseTooltip
-            text={translate({
-              id: "community.tag.tooltip",
-              message: "社区分享的精选提示词",
-            })}
-            anchorEl="#__docusaurus">
-            <Link to="/community-prompts">
-              <ShowcaseTagSelect
-                tag="communityprompt"
-                label={translate({
-                  id: "community.tag",
-                  message: "社区精选",
-                })}
-                icon={
-                  <span
-                    style={{
-                      backgroundColor: "#a2222a",
-                      width: 10,
-                      height: 10,
-                      borderRadius: "50%",
-                      marginLeft: 8,
-                    }}
-                  />
-                }
-              />
-            </Link>
-          </ShowcaseTooltip>
-        </li>
       </ul>
       {showUserPrompts && <UserPrompts />}
       {showUserFavs && <UserFavorite />}

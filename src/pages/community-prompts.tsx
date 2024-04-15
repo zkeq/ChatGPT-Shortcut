@@ -183,15 +183,6 @@ function CommunityPrompts() {
           <Link to="/">
             <HomeOutlined /> <Translate id="link.home">返回首页</Translate>
           </Link>
-          {userAuth ? (
-            <Link to="/user/favorite">
-              <HeartOutlined /> <Translate id="link.myfavorite">我的收藏</Translate>
-            </Link>
-          ) : (
-            <Button onClick={() => setOpen(true)}>
-              <LoginOutlined /> <Translate id="button.login">登录</Translate>
-            </Button>
-          )}
           <Dropdown.Button icon={<DownOutlined />} menu={fieldMenuProps}>
             {sortField === "id" ? <Translate id="field.id">发布时间</Translate> : <Translate id="field.upvoteDifference">支持度</Translate>}
           </Dropdown.Button>
