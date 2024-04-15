@@ -9,6 +9,10 @@
   display: none;
 }
 
+.titleArea {
+  margin-bottom: 1rem;
+}
+
 @media screen and (min-width: 576px) {
   .hideOnMobile {
     display: block;
