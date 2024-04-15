@@ -164,7 +164,7 @@ function ShowcaseHeader() {
   return (
     <section className={"text--center"}>
       <div className={styles.hideOnMobile}>
-        <Heading as="h1" className={styles.blueTitle}>AI 对话参考提示词库</Heading>
+        <Heading as="h1" className={styles.blueTitle}>AI 对话提示词库</Heading>
         <span ref={slogan} >&nbsp;</span>
       </div>
       <UserStatus hideLinks={{ userCenter: false, myFavorite: false }} />
