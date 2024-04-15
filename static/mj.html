@@ -3,6 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Midjourney Prompt 提示词库</title>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -240,15 +241,27 @@ b {
 .page-title {
   text-align: center; /* 标题居中对齐 */
   margin-top: [图片高度]; /* 根据固定图片的高度调整 */
-  padding: 20px 0; /* 添加一些内边距 */
+  padding: 12px 0; /* 添加一些内边距 */
   font-size: 24px; /* 设置标题字号，可以根据需要调整 */
   background-color: #f8f8f86e; /* 背景颜色，根据设计风格调整 */
-  color: #333; /* 字体颜色，根据设计风格调整 */
+  color: #5A91FCFF; /* 字体颜色，根据设计风格调整 */
   width: 100%; /* 宽度占满全宽 */
   box-sizing: border-box; /* 防止内边距影响宽度计算 */
   z-index: 10; /* 确保标题在图片之上 */
   position: relative; /* 相对定位 */
   border-radius: 25px;
+}
+
+.subtitle_wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#subtitle {
+  font-size: 18px; /* 设置副标题字号 */
+  color: #333; /* 设置副标题颜色 */
+  text-align: center; /* 副标题居中对齐 */
+  margin-bottom: 20px; /* 底部留出一些空间 */
 }
 
 @media screen and (max-width: 768px) {
@@ -320,7 +333,8 @@ span {
 </style>
 </head>
 <body>
-<h1 class="page-title">Midjourney Prompt 提示词库</h1>
+<h1 class="page-title">AI 绘画参考提示词库</h1>
+<div class="subtitle_wrapper"><span id="subtitle"></span></div>
 
   <!-- 其他内容... -->
 
@@ -429,5 +443,15 @@ function copyToClipboard(text) {
 // 页面加载完成后获取数据
 window.addEventListener('DOMContentLoaded', getLocalData);
 </script>
+
+<script>
+    var typed = new Typed('#subtitle', {
+      strings: ['让生产力加倍的 AI 绘画快捷指令！', '一键复制，即可用于IMYAI-Midjourney绘画！'],
+      typeSpeed: 100,
+      backSpeed: 100,
+      backDelay: 500,
+      loop: true
+    });
+  </script>
 </body>
 </html>
