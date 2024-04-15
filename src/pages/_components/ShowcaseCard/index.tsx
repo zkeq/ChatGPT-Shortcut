@@ -77,17 +77,21 @@ function ShowcaseCard({ user, isDescription, copyCount, onCopy, onLove }) {
   const handleCopyClick = useCallback(async () => {
     try {
       if (user[currentLanguage].prompt) {
-        copy(userDescription);
+        if (paragraphText === user[currentLanguage].prompt) {
+          copy(user[currentLanguage].prompt);
+        } else {
+          copy(user[currentLanguage].description);
+        }
       }
       setShowCopied(true);
       setTimeout(() => setShowCopied(false), 2000);
       onCopy(user.id);
       await updateCopyCount(user.id);
-      // Notify parent component to update the copy count
+      // Notify parent component to update the copy count 
     } catch (error) {
       console.error("Error updating copy count:", error);
     }
-  }, [user.id]);
+  }, [user.id, paragraphText]);
 
   const handleLove = useCallback(async () => {
     try {
