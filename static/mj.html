@@ -1,23 +1,339 @@
-
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Midjourney Prompt 提示词库</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('/core/images/bj1.png');/**背景地址**/
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  animation: slideshow 3s infinite;
+}
 
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    position: relative; /* Use relative positioning */
+    top: auto;
+    left: auto;
+    transform: none; /* Remove transform */
+    margin: 20px auto; /* Center the container with margin */
+  }
+
+  .nav {
+    flex-direction: column; /* Stack buttons vertically */
+  }
+
+  .nav button {
+    padding: 12px 24px; /* Increase padding for larger touch targets */
+    margin: 5px 0; /* Add margin between buttons */
+  }
+
+  .main {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+
+  .content {
+    padding: 15px; /* Increase padding */
+  }
+  
+  .copy-button,
+  .btn1 {
+    padding: 10px 15px; /* Increase padding for larger touch targets */
+    font-size: 14px; /* Increase font size for readability */
+  }
+
+  /* Adjust font sizes for readability */
+  .Prompt-name, .English-Prompt, .Chinese-Prompt, span {
+    font-size: 16px; /* Larger font size */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav button {
+    padding: 10px 20px; /* Further increase padding */
+    font-size: 14px; /* Adjust font size */
+  }
+}
+
+/* Ensure images are responsive */
+.Prompt-Example {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optional: Simplify or remove animations for mobile */
+@media screen and (max-width: 768px) {
+  .content {
+    animation: none; /* Disable animation on mobile */
+  }
+}
+
+
+.nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.container {
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-left: -65px;
+  margin-top: -20px;
+  width: 130px;
+  height: 40px;
+  text-align: center;
+}
+
+.btn-next {
+  --clr-font-main: hsla(0 0% 20% / 100);
+  --btn-bg-1: hsla(194 100% 69% / 1);
+  --btn-bg-2: hsla(217 100% 56% / 1);
+  --btn-bg-color: hsla(360 100% 100% / 1);
+  --radii: 0.5em;
+  cursor: pointer;
+  padding: 0.3em 1.3em;
+  margin-bottom: 10px;
+  /* zoom: 0.8; */
+  min-width: 60px;
+  min-height: 44px;
+  font-size: var(--size, 1rem);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-weight: 500;
+  transition: 0.8s;
+  background-size: 280% auto;
+  background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
+  border: none;
+  border-radius: var(--radii);
+  color: var(--btn-bg-color);
+  box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5), 0px 5px 5px -1px rgba(58, 125, 233, 0.25), inset 4px 4px 8px rgba(175, 230, 255, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+}
+
+.btn-next:hover {
+  background-position: right top;
+}
+
+.btn-next:is(:focus, :focus-within,:active) {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+}
+
+.nav button:hover {
+  transform: translateY(-3px); /* 鼠标悬停时向上移动按钮 */
+}
+
+
+.btn1 {
+  /* background-color: #E0E0E0; 浅灰色背景，以确保黑色字体可见 */
+  color: black; /* 字体颜色改为黑色 */
+  border: 2px solid #000000;
+  border-radius: 8px;
+}
+.btn1:hover {
+  background-color: #B0C4DE; /* 悬停时的背景色，仍然保证黑色字体可见 */
+  color: black; /* 悬停时字体颜色保持黑色不变 */
+}
+
+b {
+  outline:none;
+  height: 40px;
+  text-align: center;
+  width: 130px;
+  border-radius:100px;
+  background: #fff;
+  border: 2px solid #008CBA;
+  color: #008CBA;
+  letter-spacing:1px;
+  text-shadow:0;
+  font:{
+    size:12px;
+    weight:bold;
+  }
+  cursor: pointer;
+  transition: all 0.25s ease;
+&:active {
+    letter-spacing: 2px ;
+  }
+  &:after {
+    content:"";
+  }
+}
+.onclic {
+  width: 10px !important;
+  height: 70px !important;
+  border-radius: 50% !important;
+  border-color:$gray;
+  border-width:4px;
+  font-size:0;
+  border-left-color: #008CBA;
+  animation: rotating 2s 0.25s linear infinite;
+  &:hover {
+    color: dodgerblue;
+    background: white;
+  }
+}
+.validate {
+  content:"";
+  font-size:16px;
+  color: black;
+  background: dodgerblue;
+  border-radius: 50px;
+  &:after {
+    font-family:'FontAwesome';
+    content:" done \f00c";
+  }
+}
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zoomIn {
+    50% {
+    	transform: scale(1.2);
+    }
+    80% {
+    	transform: scale(1);
+    }
+}
+.nav button:hover {
+  background-color: #5A91FC;
+  color: white;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.content {
+  background-color: #ffffff8a;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-title {
+  text-align: center; /* 标题居中对齐 */
+  margin-top: [图片高度]; /* 根据固定图片的高度调整 */
+  padding: 20px 0; /* 添加一些内边距 */
+  font-size: 24px; /* 设置标题字号，可以根据需要调整 */
+  background-color: #f8f8f86e; /* 背景颜色，根据设计风格调整 */
+  color: #333; /* 字体颜色，根据设计风格调整 */
+  width: 100%; /* 宽度占满全宽 */
+  box-sizing: border-box; /* 防止内边距影响宽度计算 */
+  z-index: 10; /* 确保标题在图片之上 */
+  position: relative; /* 相对定位 */
+  border-radius: 25px;
+}
+
+@media screen and (max-width: 768px) {
+  .page-title {
+    font-size: 18px; /* 移动端使用更小的字号 */
+    padding: 15px 0; /* 移动端适当减少内边距 */
+  }
+}
+
+
+.Prompt-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.Prompt-Example {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.copy-button {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header-image {
+  width: 100%; /* 图片宽度占满全宽 */
+  height: auto; /* 保持图片的宽高比 */
+  position: fixed; /* 图片位置固定 */
+  top: 0; /* 与顶部对齐 */
+  left: 0; /* 与左侧对齐 */
+  z-index: -1; /* 确保图片不会覆盖其他内容 */
+}
+
+.copy-button:hover {
+  background-color: #2980b9;
+}
+
+span {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .main {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+</style>
+</head>
+<body>
 <h1 class="page-title">Midjourney Prompt 提示词库</h1>
 
   <!-- 其他内容... -->
 
 <div class="nav">
-  <button onclick="pages(24);">Ui设计</button>
-  <button onclick="pages(25);">插画设计</button>
-  <button onclick="pages(26);">工业设计</button>
-  <button onclick="pages(30);">二次元</button>
-  <button onclick="pages(31);">国风设计</button>
-  <button onclick="pages(32);">动画人物</button>
-  <button onclick="pages(33);">IP设计</button>
-  <button onclick="pages(34);">国潮艺术</button>
+  <button class="btn-next" onclick="pages(24);">Ui设计</button>
+  <button class="btn-next" onclick="pages(25);">插画设计</button>
+  <button class="btn-next" onclick="pages(26);">工业设计</button>
+  <button class="btn-next" onclick="pages(30);">二次元</button>
+  <button class="btn-next" onclick="pages(31);">国风设计</button>
+  <button class="btn-next" onclick="pages(32);">动画人物</button>
+  <button class="btn-next" onclick="pages(33);">IP设计</button>
+  <button class="btn-next" onclick="pages(34);">国潮艺术</button>
 </div>
 <div class="main">
 </div>
