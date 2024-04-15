@@ -38,7 +38,8 @@
     "react-html-parser": "^2.0.2",
     "react-markdown": "^9.0.1",
     "react-popper": "^2.3.0",
-    "react-share": "^5.1.0"
+    "react-share": "^5.1.0",
+    "typed.js": "^2.1.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.2.1",

@@ -45,6 +45,8 @@ import {
   AuthProvider,
 } from "@site/src/pages/_components/AuthContext";
 
+import Typed from 'typed.js';
+
 import { fetchAllCopyCounts } from "@site/src/api";
 const ShareButtons = Loadable({
   loader: () => import("@site/src/pages/_components/ShareButtons"),
@@ -144,11 +146,23 @@ function useFilteredUsers() {
 }
 
 function ShowcaseHeader() {
+  const el = React.useRef(null);
+
+  React.useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['让生产力加倍的 AI 对话快捷指令！', '一键复制，即可用于IMYAI-GPT Cluade 文心 千问 讯飞 等对话！'],
+      typeSpeed: 50,
+    });
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
   return (
     <section className={"text--center"}>
       <div className={styles.hideOnMobile}>
-        <Heading as="h1">AI Short</Heading>
-        <p className={styles.slogan}>{SLOGAN}</p>
+        <Heading as="h1" className={styles.blueTitle}>AI Short</Heading>
+        <span ref={el} ></span>
       </div>
       <UserStatus hideLinks={{ userCenter: false, myFavorite: false }} />
     </section>
