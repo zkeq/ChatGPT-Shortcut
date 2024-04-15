@@ -190,7 +190,7 @@ function ShowcaseFilters({
       <div className={styles.filterCheckbox}>
         <div>
           <Heading as="h2">
-            <Translate id="showcase.filters.title">Filters</Translate>
+            <Translate id="showcase.filters.title">标签选择</Translate>
           </Heading>
         </div>
         {currentLanguage !== "en" && (

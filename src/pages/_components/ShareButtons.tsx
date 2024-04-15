@@ -29,7 +29,7 @@ function ShareButtons({ shareUrl, title, popOver }) {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "#397e6a",
+          colorPrimary: "#5A91FCFF",
         },
       }}>
       <FloatButton.Group trigger="hover" type="primary" style={{ right: 24 }} className={styles.hideOnMobile} icon={<ShareAltOutlined />}>
