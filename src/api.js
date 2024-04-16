@@ -582,3 +582,13 @@ export async function updateCopyCount(cardId) {
     return null;
   }
 }
+
+window.addEventListener('message', function(event) {
+  const data = JSON.parse(event.data);
+  const theme = data["data-theme"];
+  if (theme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+  }
+});
