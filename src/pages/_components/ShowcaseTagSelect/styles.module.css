@@ -21,6 +21,20 @@ input[type='checkbox'] + .checkboxLabel {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px, rgba(0, 0, 0, 0.19) 0px 2px 8px 0px;
   transition: transform 0.3s ease 0s;
 }
+[data-theme='dark'] input[type='checkbox'] + .checkboxLabel {
+  background: #333;
+  color: white;
+}
+
+[data-theme='dark'] input:checked + .checkboxLabel {
+  background-color: #5A91FC;
+  color: white;
+}
+
+[data-theme='dark'] input + .checkboxLabel:hover {
+  background-color: #5A91FC;
+  color: white;
+}
 
 input:focus-visible + .checkboxLabel {
   outline: 2px solid currentColor;

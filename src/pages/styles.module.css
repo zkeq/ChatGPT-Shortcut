@@ -11,6 +11,18 @@
 
 .titleArea {
   margin-bottom: 1rem;
+  background: #ffffffbb;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+[data-theme='dark'] .titleArea {
+  margin-bottom: 1rem;
+  background: #333;
+  border-radius: 16px;
+  padding: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 @media screen and (min-width: 576px) {

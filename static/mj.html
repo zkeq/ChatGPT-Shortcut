@@ -212,12 +212,23 @@ b {
     	transform: scale(1);
     }
 }
+
+[data-theme='dark'] .nav button:hover {
+  background-color: #5A91FC;
+  color: white;
+}
+
 .nav button:hover {
   background-color: #5A91FC;
   color: white;
 }
 
 .btn-next:is(:focus, :focus-within,:active) {
+  background-color: #5A91FC;
+  color: white;
+}
+
+[data-theme='dark'] .btn-next.active {
   background-color: #5A91FC;
   color: white;
 }
@@ -242,6 +253,11 @@ b {
   animation: fadeIn 0.5s ease;
 }
 
+[data-theme='dark'] .content {
+  background: #303032;
+  color: white;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -257,16 +273,36 @@ b {
   text-align: center; /* 标题居中对齐 */
   margin-top: [图片高度]; /* 根据固定图片的高度调整 */
   padding: 12px 0 0 12px;
-  background-color: #f8f8f86e; /* 背景颜色，根据设计风格调整 */
+  /* background-color: #f8f8f86e; 背景颜色，根据设计风格调整 */
   color: #5A91FCFF; /* 字体颜色，根据设计风格调整 */
   width: 100%; /* 宽度占满全宽 */
   box-sizing: border-box; /* 防止内边距影响宽度计算 */
   z-index: 10; /* 确保标题在图片之上 */
   position: relative; /* 相对定位 */
-  border-radius: 25px;
+  /* border-radius: 25px; */
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
+
+[data-theme='dark'] body {
+  background: #1B1B1D;
+  color: white;
+}
+
+[data-theme='dark'] header {
+  /* border: 1px solid red; */
+  background: #333;
+  border-radius: 20px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+
+[data-theme='dark'] .nav button {
+  background: #333; /* 深色背景 */
+  color: #fff; /* 白色字体 */
+}
+
 
 .subtitle_wrapper {
   text-align: center;
@@ -275,7 +311,15 @@ b {
 
 #subtitle {
   /* font-size: 18px; 设置副标题字号 */
-  color: #333; /* 设置副标题颜色 */
+  color: black; /* 设置副标题颜色 */
+  text-align: center; /* 副标题居中对齐 */
+  margin-bottom: 20px; /* 底部留出一些空间 */
+  font-weight: normal;
+}
+
+[data-theme='dark'] #subtitle {
+  /* font-size: 18px; 设置副标题字号 */
+  color: white; /* 设置副标题颜色 */
   text-align: center; /* 副标题居中对齐 */
   margin-bottom: 20px; /* 底部留出一些空间 */
   font-weight: normal;
@@ -343,8 +387,10 @@ span {
 </style>
 </head>
 <body>
-<h1 class="page-title">AI 绘画提示词库</h1>
-<div class="subtitle_wrapper"><span id="subtitle"></span></div>
+<header>
+  <h1 class="page-title">AI 绘画提示词库</h1>
+  <div class="subtitle_wrapper"><span id="subtitle"></span></div>
+</header>
 
   <!-- 其他内容... -->
 
@@ -471,6 +517,18 @@ window.addEventListener('DOMContentLoaded', getLocalData);
       backSpeed: 60,
       backDelay: 500,
       loop: true
+    });
+  </script>
+
+  <script>
+    window.addEventListener('message', function(event) {
+      const data = JSON.parse(event.data);
+      const theme = data["data-theme"];
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
     });
   </script>
 </body>

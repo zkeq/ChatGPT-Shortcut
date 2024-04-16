@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+    <!-- <iframe id="iframe" src="http://localhost:3000/mj.html" style="width: 100%; height: 500px; border: none;"></iframe> -->
+    
+    <script>
+		setInterval(() => {
+            let iframe = document.getElementById('iframe');
+            if (!iframe) { return ; }
+            const data = {
+                'data-theme': localStorage.getItem('theme'),
+            };
+            iframe.contentWindow.postMessage(JSON.stringify(data), '*');
+        }, 100);
+    </script>
+    
+</body>
+</html>
