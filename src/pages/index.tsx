@@ -45,7 +45,7 @@ import {
   AuthProvider,
 } from "@site/src/pages/_components/AuthContext";
 
-import Typed from 'typed.js';
+import Typed from "typed.js";
 
 import { fetchAllCopyCounts } from "@site/src/api";
 const ShareButtons = Loadable({
@@ -150,11 +150,14 @@ function ShowcaseHeader() {
 
   React.useEffect(() => {
     const typed = new Typed(slogan.current, {
-      strings: ['让生产力加倍的 Prompt 快捷指令！', '一键复制，即可用于IMYAI-GPT Cluade 文心 千问 讯飞 等对话！'],
+      strings: [
+        "让生产力加倍的 Prompt 快捷指令！",
+        "一键复制，即可用于IMYAI-GPT Cluade 文心 千问 讯飞 等对话！",
+      ],
       typeSpeed: 60,
       backSpeed: 60,
       backDelay: 500,
-      loop: true
+      loop: true,
     });
     return () => {
       // Destroy Typed instance during cleanup to stop animation
@@ -164,8 +167,10 @@ function ShowcaseHeader() {
   return (
     <section className={"text--center"}>
       <div className={styles.titleArea}>
-        <Heading as="h1" className={styles.blueTitle}>AI 对话提示词库</Heading>
-        <span ref={slogan} >&nbsp;</span>
+        <Heading as="h1" className={styles.blueTitle}>
+          AI 对话提示词库
+        </Heading>
+        <span ref={slogan}>&nbsp;</span>
       </div>
       <UserStatus hideLinks={{ userCenter: false, myFavorite: false }} />
     </section>
@@ -201,6 +206,10 @@ function ShowcaseFilters({
   const togglePromptLanguage = (
     <Translate id="toggle_prompt_language">切换 Prompt 语言</Translate>
   );
+
+  const handleMoreClick = () => {
+    window.location.href = "https://tuo.icodeq.com/prompt";
+  };
 
   return (
     <section className="container">
@@ -245,38 +254,28 @@ function ShowcaseFilters({
               {tag === "favorite" ? (
                 <></>
               ) : (
-                  <li
-                    key={i}
-                    className={styles.checkboxListItem}
-                    onClick={handleTagClick}
+                <li
+                  key={i}
+                  className={styles.checkboxListItem}
+                  onClick={handleTagClick}
+                >
+                  <ShowcaseTooltip
+                    id={id}
+                    text={description}
+                    anchorEl="#__docusaurus"
                   >
-                    <ShowcaseTooltip
-                      id={id}
-                      text={description}
-                      anchorEl="#__docusaurus"
-                    >
-                      <ShowcaseTagSelect
-                        tag={tag}
-                        id={id}
-                        label={label}
-                        icon={
-                          <span
-                            style={{
-                              backgroundColor: color,
-                              width: 10,
-                              height: 10,
-                              borderRadius: "50%",
-                              marginLeft: 8,
-                            }}
-                          />
-                        }
-                      />
-                    </ShowcaseTooltip>
-                  </li>
+                    <ShowcaseTagSelect tag={tag} id={id} label={label} />
+                  </ShowcaseTooltip>
+                </li>
               )}
             </>
           );
         })}
+        <li className={styles.checkboxListItem} onClick={handleMoreClick}>
+          <ShowcaseTooltip text="探索更多" anchorEl="#__docusaurus">
+            <ShowcaseTagSelect tag="探索更多" label="探索更多" />
+          </ShowcaseTooltip>
+        </li>
       </ul>
       {showUserPrompts && <UserPrompts />}
       {showUserFavs && <UserFavorite />}

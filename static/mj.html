@@ -43,7 +43,7 @@ body {
   }
   
   .copy-button,
-  .btn1 {
+  .btn_small {
     padding: 10px 15px; /* Increase padding for larger touch targets */
     font-size: 14px; /* Increase font size for readability */
   }
@@ -94,18 +94,24 @@ body {
 }
 
 .btn-next {
-  display: inline-block;
-  background-color: #5A91FCFF;
-  color: #f6fdfd;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.3rem;
+  color: black; /* 字体颜色改为黑色 */
+  background: #FFFFFF; /* 设定一个非透明的背景颜色，例如白色 */
+  border: 2px; /* 边框样式、颜色、宽度保持不变 */
+  border-radius: 8px; /* 给边框添加圆角保持不变 */
   text-decoration: none;
-  font-size: 0.75rem;
-  font-weight: bold;
-  margin-right: 0.75rem;
-  border: none;
-  box-shadow: none;
+  text-transform: uppercase; /* 字母转大写保持不变 */
+  padding: 16px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* 兼容 Safari */
+  transition-duration: 0.4s;
   cursor: pointer;
+  /* 移除透明效果后的阴影效果保持 */
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px, rgba(0, 0, 0, 0.19) 0px 2px 8px 0px;
+  transition: transform 0.3s;
 }
 
 /* .btn-next:hover {
@@ -124,7 +130,7 @@ body {
 */
 
 
-.btn1 {
+.btn_small {
   /* background-color: #E0E0E0; 浅灰色背景，以确保黑色字体可见 */
   display: inline-block;
   background-color: #5A91FCFF;
@@ -211,6 +217,15 @@ b {
   color: white;
 }
 
+.btn-next:is(:focus, :focus-within,:active) {
+  background-color: #5A91FC;
+  color: white;
+}
+
+.btn-next.active {
+  background-color: #5A91FC;
+  color: white;
+}
 .main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -259,7 +274,7 @@ b {
 }
 
 #subtitle {
-  font-size: 18px; /* 设置副标题字号 */
+  /* font-size: 18px; 设置副标题字号 */
   color: #333; /* 设置副标题颜色 */
   text-align: center; /* 副标题居中对齐 */
   margin-bottom: 20px; /* 底部留出一些空间 */
@@ -341,15 +356,15 @@ span {
   <!-- 其他内容... -->
 
 <div class="nav">
-  <button class="btn-next" onclick="pages(24);">Ui设计</button>
-  <button class="btn-next" onclick="pages(25);">插画设计</button>
-  <button class="btn-next" onclick="pages(26);">工业设计</button>
-  <button class="btn-next" onclick="pages(30);">二次元</button>
-  <button class="btn-next" onclick="pages(31);">国风设计</button>
-  <button class="btn-next" onclick="pages(32);">动画人物</button>
-  <button class="btn-next" onclick="pages(33);">IP设计</button>
-  <button class="btn-next" onclick="pages(34);">国潮艺术</button>
-  <button class="btn-next" onclick="window.location.href='https://ai.imyai.top/market'">探索更多</button>
+  <button class="btn-next btn1 active" onclick="pages(24, 'btn1');">Ui设计</button>
+  <button class="btn-next btn2" onclick="pages(25, 'btn2');">插画设计</button>
+  <button class="btn-next btn3" onclick="pages(26, 'btn3');">工业设计</button>
+  <button class="btn-next btn4" onclick="pages(30, 'btn4');">二次元</button>
+  <button class="btn-next btn5" onclick="pages(31, 'btn5');">国风设计</button>
+  <button class="btn-next btn6" onclick="pages(32, 'btn6');">动画人物</button>
+  <button class="btn-next btn7" onclick="pages(33, 'btn7');">IP设计</button>
+  <button class="btn-next btn8" onclick="pages(34, 'btn8');">国潮艺术</button>
+  <button class="btn-next btn9" onclick="window.location.href='https://ai.imyai.top/market'">探索更多</button>
 </div>
 <div class="main">
 </div>
@@ -357,9 +372,18 @@ span {
 <script>
 window.addEventListener('DOMContentLoaded', () => {
   getLocalData();
-  pages(24); // 模拟点击第一个按钮
+  pages(24, "btn1"); // 模拟点击第一个按钮
 });
-function pages(id) {
+
+function pages(id, className) {
+  let btns = document.querySelectorAll('.btn-next');
+  btns.forEach(btn => {
+    btn.classList.remove('active');
+  });
+  if (className) {
+    document.querySelector(`.${className}`).classList.add('active');
+  }
+
   let main = document.querySelector('.main');
   main.innerHTML = "";
   fetch('https://huihua.jiucyun.com/prod-api/huihua/description/getListByCatId?categoryId=' + id)
@@ -372,14 +396,14 @@ function pages(id) {
             <div class="English-Prompt">
               <span>英文提示</span>:<br>
               ${data.rows[i].enInstructions}
-              <button class="btn1" onclick="copyToClipboard('${data.rows[i].enInstructions}')">复制</button>
+              <button class="btn_small" onclick="copyToClipboard('${data.rows[i].enInstructions}')">复制</button>
             </div>
             <div class="Chinese-Prompt">
               <span>中文提示：</span><br>
               ${data.rows[i].instructions}
-              <button class="btn1" onclick="copyToClipboard('${data.rows[i].instructions}')">复制</button>
+              <button class="btn_small" onclick="copyToClipboard('${data.rows[i].instructions}')">复制</button>
             </div>
-            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn1" onclick="window.location.href='${data.rows[i].effectShow}'">下载</button></p>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='${data.rows[i].effectShow}'">下载</button></p>
             <img class="Prompt-Example" src="${data.rows[i].effectShow}">
           </div>`;
       }
@@ -414,14 +438,14 @@ function getLocalData() {
             <div class="English-Prompt">
               <span>英文提示</span>:<br>
               ${data[i].promptEn}
-              <button class="btn1" onclick="copyToClipboard('${data[i].promptEn}')">复制</button>
+              <button class="btn_small" onclick="copyToClipboard('${data[i].promptEn}')">复制</button>
             </div>
             <div class="Chinese-Prompt">
               <span>中文提示：</span><br>
               ${data[i].prompt}
-              <button class="btn1" onclick="copyToClipboard('${data[i].prompt}')">复制</button>
+              <button class="btn_small" onclick="copyToClipboard('${data[i].prompt}')">复制</button>
             </div>
-            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn1" onclick="window.location.href='${data[i].originalImgUrl}'">下载</button></p>
+            <p style="font-weight: bold; margin-bottom: 10px;">展示图片：<button class="btn_small" onclick="window.location.href='${data[i].originalImgUrl}'">下载</button></p>
             <img class="Prompt-Example" src="${data[i].thumb}">
           </div>`;
       }
