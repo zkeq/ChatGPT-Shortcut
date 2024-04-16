@@ -289,7 +289,11 @@ b {
   color: white;
 }
 
-[data-theme='dark'] header {
+header {
+  padding: 1rem;
+}
+
+[data-theme='dark'] .header {
   /* border: 1px solid red; */
   background: #333;
   border-radius: 20px;
@@ -297,7 +301,7 @@ b {
   margin-bottom: 10px;
 }
 
-header {
+.header {
   /* max-width: 1240px; */
   margin: 0 auto;
   padding: 8px;
@@ -395,8 +399,10 @@ span {
 </head>
 <body>
 <header>
-  <h1 class="page-title">AI 绘画提示词库</h1>
-  <div class="subtitle_wrapper"><span id="subtitle">&nbsp;</span></div>
+  <div class="header">
+    <h1 class="page-title">AI 绘画提示词库</h1>
+    <div class="subtitle_wrapper"><span id="subtitle">&nbsp;</span></div>
+  </div>
 </header>
 
   <!-- 其他内容... -->
