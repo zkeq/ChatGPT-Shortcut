@@ -9,7 +9,7 @@ input[type='checkbox'] + .checkboxLabel {
   color: black;
   background: rgb(255, 255, 255);
   border: 2px;
-  border-radius: 8px;
+  border-radius: 6px;
   text-decoration: none;
   text-transform: uppercase;
   padding: 8px 18px;
