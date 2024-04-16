@@ -303,3 +303,6 @@ nav.navbar.navbar--fixed-top {
   --ifm-h1-font-size: 3rem;
 }
 
+.container {
+  padding: 0 !important;
+}
