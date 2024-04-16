@@ -210,16 +210,44 @@ function ShowcaseFilters({
   const handleMoreClick = () => {
     window.location.href = "https://tuo.icodeq.com/prompt";
   };
+  const history = useHistory();
+  const location = useLocation();
+  const searchRef = useRef<HTMLInputElement>(null);
+  const [value, setValue] = useState<string | null>(null);
+
+  useEffect(() => {
+    setValue(readSearchName(location.search));
+    if (searchRef.current) {
+      searchRef.current.focus();
+    }
+  }, [location]);
+
+  const updateSearch = useCallback(
+    debounce((searchValue: string) => {
+      const newSearch = new URLSearchParams(location.search);
+      newSearch.delete(SearchNameQueryKey);
+      if (searchValue) {
+        newSearch.set(SearchNameQueryKey, searchValue);
+      }
+      history.push({
+        ...location,
+        search: newSearch.toString(),
+        state: prepareUserState(),
+      });
+    }, 1000), // search latency 搜索延时
+    [location, history]
+  );
+
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setValue(e.currentTarget.value);
+    updateSearch(e.currentTarget.value);
+  };
 
   return (
     <section className="container">
       <div className={styles.filterCheckbox}>
-        <div>
-          <Heading as="h2">
-            <Translate id="showcase.filters.title">标签</Translate>
-          </Heading>
-        </div>
         {currentLanguage !== "en" && (
+          <>
           <button
             onClick={onToggleDescription}
             className={styles.onToggleButton}
@@ -231,8 +259,23 @@ function ShowcaseFilters({
           >
             {togglePromptLanguage}
           </button>
+          <div className={styles.searchContainer}>
+          <input
+            ref={searchRef}
+            id="searchbar"
+            placeholder={translate({
+              message: "Search for prompts...",
+              id: "showcase.searchBar.placeholder",
+            })}
+            value={value ?? undefined}
+            onInput={handleInput}
+          />
+          </div>
+          </>
         )}
       </div>
+      
+      
       <ul className={clsx("clean-list", styles.checkboxList)}>
         {modifiedTagList.map((tag, i) => {
           const { label, description, color } = Tags[tag];
@@ -280,55 +323,6 @@ function ShowcaseFilters({
   );
 }
 
-function SearchBar() {
-  const history = useHistory();
-  const location = useLocation();
-  const searchRef = useRef<HTMLInputElement>(null);
-  const [value, setValue] = useState<string | null>(null);
-
-  useEffect(() => {
-    setValue(readSearchName(location.search));
-    if (searchRef.current) {
-      searchRef.current.focus();
-    }
-  }, [location]);
-
-  const updateSearch = useCallback(
-    debounce((searchValue: string) => {
-      const newSearch = new URLSearchParams(location.search);
-      newSearch.delete(SearchNameQueryKey);
-      if (searchValue) {
-        newSearch.set(SearchNameQueryKey, searchValue);
-      }
-      history.push({
-        ...location,
-        search: newSearch.toString(),
-        state: prepareUserState(),
-      });
-    }, 1000), // search latency 搜索延时
-    [location, history]
-  );
-
-  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value);
-    updateSearch(e.currentTarget.value);
-  };
-
-  return (
-    <div className={styles.searchContainer}>
-      <input
-        ref={searchRef}
-        id="searchbar"
-        placeholder={translate({
-          message: "Search for prompts...",
-          id: "showcase.searchBar.placeholder",
-        })}
-        value={value ?? undefined}
-        onInput={handleInput}
-      />
-    </div>
-  );
-}
 
 function ShowcaseCards({ isDescription, showUserFavs }) {
   const [copyCounts, setCopyCounts] = useState({});
@@ -405,7 +399,6 @@ function ShowcaseCards({ isDescription, showUserFavs }) {
               😒 找不到结果，请缩短搜索词
             </Translate>
           </Heading>
-          <SearchBar />
         </div>
       </section>
     );
@@ -428,7 +421,6 @@ function ShowcaseCards({ isDescription, showUserFavs }) {
                     All prompts
                   </Translate>
                 </Heading>
-                <SearchBar />
               </div>
               <ul className={clsx("clean-list", styles.showcaseList)}>
                 {displayedOtherUsers.map((user) => (
@@ -462,7 +454,6 @@ function ShowcaseCards({ isDescription, showUserFavs }) {
                 styles.showcaseFavoriteHeader
               )}
             >
-              <SearchBar />
             </div>
             <ul className={clsx("clean-list", styles.showcaseList)}>
               {filteredUsers.map((user) => (
@@ -486,7 +477,6 @@ function ShowcaseCards({ isDescription, showUserFavs }) {
   return (
     <div className="container">
       <div className={clsx("margin-bottom--md", styles.showcaseFavoriteHeader)}>
-        <SearchBar />
       </div>
       <ul className={clsx("clean-list", styles.showcaseList)}>
         {filteredUsers.map((user) => (
