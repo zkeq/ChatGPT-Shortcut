@@ -523,7 +523,7 @@ export default function Showcase(): JSX.Element {
             showUserFavs={showUserFavs}
           />
         </AuthProvider>
-        <ShareButtons shareUrl={Shareurl} title={TITLE} popOver={false} />
+        {/* <ShareButtons shareUrl={Shareurl} title={TITLE} popOver={false} /> */}
       </main>
     </Layout>
   );
