@@ -20,6 +20,7 @@ import Heading from "@theme/Heading";
 import {
   EditOutlined,
   HeartOutlined,
+  SearchOutlined,
   ArrowDownOutlined,
 } from "@ant-design/icons";
 import { debounce } from "lodash";
@@ -259,7 +260,7 @@ function ShowcaseFilters({
           >
             {togglePromptLanguage}
           </button>
-          <div className={styles.searchContainer}>
+          <div className={styles.searchContainer} style={{ position: 'relative' }}>
           <input
             ref={searchRef}
             id="searchbar"
@@ -269,8 +270,11 @@ function ShowcaseFilters({
             })}
             value={value ?? undefined}
             onInput={handleInput}
+            style={{ paddingLeft: '30px' }} // 为图标留出空间
           />
-          </div>
+          <SearchOutlined style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)' }} />
+        </div>
+
           </>
         )}
       </div>
