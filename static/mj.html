@@ -528,7 +528,8 @@ window.addEventListener('DOMContentLoaded', getLocalData);
   </script>
 
   <script>
-    window.addEventListener('message', function(event) {
+  window.addEventListener('message', function (event) {
+    try {
       const data = JSON.parse(event.data);
       const theme = data["data-theme"];
       if (theme === "dark") {
@@ -536,7 +537,9 @@ window.addEventListener('DOMContentLoaded', getLocalData);
       } else {
         document.documentElement.removeAttribute("data-theme");
       }
-    });
+    } catch (e) {
+    }
+  });
   </script>
 </body>
 </html>

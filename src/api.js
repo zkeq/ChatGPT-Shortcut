@@ -585,12 +585,15 @@ export async function updateCopyCount(cardId) {
 
 if (typeof window !== 'undefined') {
   window.addEventListener('message', function(event) {
-    const data = JSON.parse(event.data);
-    const theme = data["data-theme"];
-    if (theme === "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.removeAttribute("data-theme");
+    try{
+      const data = JSON.parse(event.data);
+      const theme = data["data-theme"];
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+    } catch (e) {
     }
-  });
+});
 }
