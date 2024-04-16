@@ -583,12 +583,14 @@ export async function updateCopyCount(cardId) {
   }
 }
 
-window.addEventListener('message', function(event) {
-  const data = JSON.parse(event.data);
-  const theme = data["data-theme"];
-  if (theme === "dark") {
-    document.documentElement.setAttribute("data-theme", "dark");
-  } else {
-    document.documentElement.removeAttribute("data-theme");
-  }
-});
+if (typeof window !== 'undefined') {
+  window.addEventListener('message', function(event) {
+    const data = JSON.parse(event.data);
+    const theme = data["data-theme"];
+    if (theme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  });
+}
