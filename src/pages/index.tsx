@@ -216,7 +216,7 @@ function ShowcaseFilters({
       <div className={styles.filterCheckbox}>
         <div>
           <Heading as="h2">
-            <Translate id="showcase.filters.title">标签选择</Translate>
+            <Translate id="showcase.filters.title">标签</Translate>
           </Heading>
         </div>
         {currentLanguage !== "en" && (
@@ -232,9 +232,6 @@ function ShowcaseFilters({
             {togglePromptLanguage}
           </button>
         )}
-        <div className={styles.hideOnMobile}>
-          <ShowcaseFilterToggle />
-        </div>
       </div>
       <ul className={clsx("clean-list", styles.checkboxList)}>
         {modifiedTagList.map((tag, i) => {
