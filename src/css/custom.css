@@ -306,3 +306,7 @@ nav.navbar.navbar--fixed-top {
 .container {
   padding: 0 !important;
 }
+
+.margin-vert--md {
+  padding: 1rem;
+}
