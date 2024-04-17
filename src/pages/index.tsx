@@ -153,7 +153,8 @@ function ShowcaseHeader() {
     const typed = new Typed(slogan.current, {
       strings: [
         "让生产力加倍的 Prompt 快捷指令！",
-        "一键复制，即可用于IMYAI-GPT Cluade 文心 千问 讯飞 等对话！",
+        "一键复制，即可用于IMYAI-GPT Cluade 文心 千问 星火 智谱等对话！",
+        "IMYAI智能助手，你的终身学习生活聊天伙伴！"
       ],
       typeSpeed: 60,
       backSpeed: 60,
