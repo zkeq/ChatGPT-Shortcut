@@ -212,6 +212,9 @@ function ShowcaseFilters({
   const handleMoreClick = () => {
     window.location.href = "https://tuo.icodeq.com/prompt";
   };
+  const handleBackClick = () => {
+    window.open('https://ai.imyai.top/chat', '_blank');
+  };
   const history = useHistory();
   const location = useLocation();
   const searchRef = useRef<HTMLInputElement>(null);
@@ -319,6 +322,11 @@ function ShowcaseFilters({
         <li className={styles.checkboxListItem} onClick={handleMoreClick}>
           <ShowcaseTooltip text="探索更多" anchorEl="#__docusaurus">
             <ShowcaseTagSelect tag="探索更多" label="探索更多" />
+          </ShowcaseTooltip>
+        </li>
+        <li className={styles.checkboxListItem} onClick={handleBackClick}>
+          <ShowcaseTooltip text="返回对话" anchorEl="#__docusaurus">
+            <ShowcaseTagSelect tag="返回对话" label="返回对话" />
           </ShowcaseTooltip>
         </li>
       </ul>
