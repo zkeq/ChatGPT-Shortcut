@@ -310,3 +310,9 @@ nav.navbar.navbar--fixed-top {
 .margin-vert--md {
   padding: 1rem;
 }
+
+::selection {
+  color: rgb(0, 0, 0);
+  background: rgb(255, 239, 92);
+  -webkit-text-fill-color: unset !important;
+}
